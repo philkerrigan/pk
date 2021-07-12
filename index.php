@@ -3,9 +3,8 @@
     include('header.php');
 ?>
 
-hi tetsttslkdfhl
+hi tetsttslk
   <!-- Add your site or application content here -->
-
 
 
 
