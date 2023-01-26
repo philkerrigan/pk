@@ -1,59 +1,50 @@
-// Initialize modules
-const { src, dest, watch, series, parallel } = require('gulp');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const concat = require('gulp-concat');
+const { src, dest, watch, series } = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
-const replace = require('gulp-replace');
-const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
+const cssnano = require('cssnano');
+const terser = require('gulp-terser');
+const browsersync = require('browser-sync').create();
 
-// File path variables
-const files = {
-    scssPath: 'src/scss/**/*.scss',
-    jsPath: 'src/js/**/*.js'
-}
-
-// Sass task
+// Sass Task
 function scssTask(){
-    return src(files.scssPath)
-        .pipe(concat('all.css'))
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(postcss([ autoprefixer(), cssnano() ]))
-        .pipe(sourcemaps.write('.'))
-        .pipe(dest('dist/css')
-    );
+  return src('app/scss/main.scss', { sourcemaps: true })
+    .pipe(sass())
+    .pipe(postcss([cssnano()]))
+    .pipe(dest('dist/css/', { sourcemaps: '.' }));
 }
 
-// JS task
+// JavaScript Task
 function jsTask(){
-    return src(files.jsPath)
-        .pipe(concat('all.js'))
-        .pipe(uglify())
-        .pipe(dest('dist/js')
-    );
+  return src('app/js/script.js', { sourcemaps: true })
+    .pipe(terser())
+    .pipe(dest('dist/js/', { sourcemaps: '.' }));
 }
 
-// Cachebusting task
-const cbString = new Date().getTime();
-function cacheBustTask(){
-    return src(['index.php'])
-        .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
-        .pipe(dest('.')
-    );
+// Browsersync Tasks
+function browsersyncServe(cb){
+  browsersync.init({
+    server: {
+      baseDir: '.'
+    }
+  });
+  cb();
 }
 
-// Watch task
+function browsersyncReload(cb){
+  browsersync.reload();
+  cb();
+}
+
+// Watch Task
 function watchTask(){
-    watch([files.scssPath, files.jsPath],
-        parallel(scssTask, jsTask));
+  watch('*.php', browsersyncReload);
+  watch(['app/scss/**/*.scss', 'app/js/**/*.js'], series(scssTask, jsTask, browsersyncReload));
 }
 
-// Default task
+// Default Gulp task
 exports.default = series(
-    parallel(scssTask, jsTask),
-    cacheBustTask,
-    watchTask
+  scssTask,
+  jsTask,
+  browsersyncServe,
+  watchTask
 );

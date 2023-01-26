@@ -13,7 +13,7 @@
 					<div class="sample-grid">
 
 						<div>
-							Fart Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							Lore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</div>
 						<div>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -61,7 +61,7 @@
 							Lorem ipsum dolor sit.
 						</div>
 						<div>
-							Lorem ipsum dolor sit.
+							Lorem ipsum dolor sit. 
 						</div>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 
 			<section class="resume">
 				<div class="wrap">
-					<div class="grid-experience">
+					<div class="grid-experience"> 
 						<div>
 							Experience
 						</div>
@@ -95,6 +95,7 @@
 							</div>
 							<div>
 								<ul>
+                                    <li>Designed a developed checkout for trial landers - increased conversion by 15%. yep.</li>
 									<li>Provide logo, packaging, and web site design for new products</li>
 									<li>Develop UI / UX for internal CRM and shopping cart admin tool</li>
 									<li>Front-end development for all web related tasks</li>
@@ -125,7 +126,7 @@
 									<li>Project managed contracted design agencies</li>
 									<li>Designed and developed homepage for Boston Business Hub within Salesforce environment</li>
 								</ul>
-							</div>
+							</div> 
 
 							<div>
 								VistaPrint, Web Production Designer 01.2007–01.2008
