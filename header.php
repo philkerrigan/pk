@@ -10,9 +10,9 @@
 
     <link rel="apple-touch-icon" href="icon.png">
 
-    <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="dist/styles/main.css">
 
-    <script src="dist/js/script.js"></script>
+    <script src="dist/scripts/script.js"></script>
 
 </head>
 

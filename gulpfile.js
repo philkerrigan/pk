@@ -1,50 +1,35 @@
-const { src, dest, watch, series } = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const postcss = require('gulp-postcss');
-const cssnano = require('cssnano');
-const terser = require('gulp-terser');
-const browsersync = require('browser-sync').create();
+const { src, dest, series, watch } = require('gulp');
 
-// Sass Task
-function scssTask(){
-  return src('app/scss/main.scss', { sourcemaps: true })
-    .pipe(sass())
-    .pipe(postcss([cssnano()]))
-    .pipe(dest('dist/css/', { sourcemaps: '.' }));
+// styles
+const scss = require('gulp-sass')(require('sass'));
+const autoPrefixer = require('gulp-autoprefixer');
+const cssMinify = require('gulp-clean-css');
+
+function styles() {
+    return src('./src/styles/**/*.scss')
+        .pipe(scss())
+        .pipe(autoPrefixer('last 2 versions'))
+        .pipe(cssMinify())
+        .pipe(dest('./dist/styles/'))
 }
 
-// JavaScript Task
-function jsTask(){
-  return src('app/js/script.js', { sourcemaps: true })
-    .pipe(terser())
-    .pipe(dest('dist/js/', { sourcemaps: '.' }));
+// scripts
+const jsMinify = require('gulp-terser');
+
+function scripts() {
+    return src('./src/scripts/**/*.js')
+        .pipe(jsMinify())
+        .pipe(dest('./dist/scripts/'))
 }
 
-// Browsersync Tasks
-function browsersyncServe(cb){
-  browsersync.init({
-    server: {
-      baseDir: '.'
-    }
-  });
-  cb();
+function watchTask() {
+    watch(
+            [
+            './src/styles/**/*.scss',
+            './src/scripts/**/*.js'
+            ],
+            series(styles, scripts)
+        )
 }
 
-function browsersyncReload(cb){
-  browsersync.reload();
-  cb();
-}
-
-// Watch Task
-function watchTask(){
-  watch('*.php', browsersyncReload);
-  watch(['app/scss/**/*.scss', 'app/js/**/*.js'], series(scssTask, jsTask, browsersyncReload));
-}
-
-// Default Gulp task
-exports.default = series(
-  scssTask,
-  jsTask,
-  browsersyncServe,
-  watchTask
-);
+exports.default = series(styles, scripts, watchTask);
